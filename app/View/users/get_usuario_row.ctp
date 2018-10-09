@@ -1,0 +1,1 @@
+<?php echo $this->element('Usuario/usuario_row',array('usuario_id'=>$usuario_id)); ?>
