@@ -12,13 +12,6 @@ $(document).ready(function(){
 		}
 	}
 	
-	/* Mostrar formulario: Crear RolPersona */
-	$body.off('click','div#persona .btn-nuevo-persona');
-	$body.on('click', 'div#persona .btn-nuevo-persona' , function(){
-		persona_id = $(this).attr('persona_id');
-		persona.openAddEditRolPersona(persona_id);
-	});
-	
 	/* Ocultar formulario Crear RolPersona*/
 	$body.on('click','div#div-crear-persona .btn-cancelar-crear-persona', function(){
 		$('#div-crear-persona').fadeOut();
@@ -65,8 +58,8 @@ $(document).ready(function(){
 		});
 	});
 
-	$body.off('click','div#persona .edit-persona-trigger');
-	$body.on('click','div#persona .edit-persona-trigger', function(){
+	$body.off('click','div#rol_persona .edit-persona-trigger');
+	$body.on('click','div#rol_persona .edit-persona-trigger', function(){
 		persona_id = $(this).parents('.persona_row_container').attr('persona_id');
 		persona.openAddEditRolPersona(persona_id);
 	});

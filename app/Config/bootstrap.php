@@ -108,7 +108,7 @@ CakeLog::config('error', array(
 
 switch (Configure::read('environment')){
 	case 'localhost':
-		Configure::write('honline.url','http://localhost/honly/');
+		Configure::write('honline.url','http://localhost/github/honly/');
 		//Configure::write('SCRIPT_MIN','');
 		break;
 	case 'production':
@@ -116,7 +116,7 @@ switch (Configure::read('environment')){
 		//Configure::write('SCRIPT_MIN','.min');
 		break;
 	default:
-		Configure::write('honline.url','http://localhost/honly/');
+		Configure::write('honline.url','http://localhost/github/honly/');
 		//Configure::write('SCRIPT_MIN','');
 }
 

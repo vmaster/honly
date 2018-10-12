@@ -8,7 +8,7 @@ $(document).ready(function(){
 			if(persona_id == undefined || !persona_id) {
 				persona_id ='';
 				//tipo_persona_id = '';
-				//var_
+				//var_tipo_persona_id
 			}else{
 				addMaxLengthNroDoc();
 				setTimeout(function(){

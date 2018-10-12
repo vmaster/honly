@@ -106,8 +106,6 @@ $('#container_page .pagination li.active').live('click',function(){
 }); 
 </script>
 <div id="persona">
-	<div id="holitas">
-	</div>
 	<div id="add_edit_persona_container">
 	</div>
 	
