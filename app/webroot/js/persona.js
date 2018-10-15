@@ -50,6 +50,23 @@ $(document).ready(function(){
 			$('div#rol_persona #add_edit_rol_persona_container').load(env_webroot_script + escape('RolPersonas/add_edit_rol_persona/'+persona_id+'/'+persona_nombre),function(){
 				
 			});
+		},
+
+		deletePersona: function(persona_id){
+			$.ajax({
+				type: 'post',
+				url: env_webroot_script + 'personas/delete_persona',
+				data: {'persona_id' : persona_id},
+				dateType: 'json'
+			}).done(function(data) {
+				if(data.success==true){
+					alert(123); return false;
+					$('.persona_row_container[persona_id='+persona_id+']').fadeOut(function (){$(this).remove()});
+					alertify.success(data.msg);
+				}/*else{
+					alertify.error(data.msg);
+				}*/	
+			});
 		}
 	}
 	
@@ -116,6 +133,20 @@ $(document).ready(function(){
 		//alert(persona_id); return false;
 		//tipo_persona_id = $(this).parents('.persona_row_container').attr('tipo_persona_id');
 		persona.openAddEditPersona(persona_id);
+	});
+
+	$body.off('click','div#myModalDeletePersona .delete-persona-trigger');
+	$body.on('click', 'div#myModalDeletePersona .delete-persona-trigger', function(){
+		persona_id = $('div#myModalDeletePersona').attr('persona_id');
+		persona.deletePersona(persona_id);
+		//alert();
+	});
+
+	$body.off('click','div#persona .open-model-delete-persona');
+	$body.on('click','div#persona .open-model-delete-persona', function(){
+		//alert();
+		persona_id = $(this).parents('.persona_row_container').attr('persona_id');
+		$('div#myModalDeletePersona').attr('persona_id', persona_id);
 	});
 	
 	/* Agregar una fila a la grilla de lista de personas */

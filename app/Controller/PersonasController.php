@@ -314,6 +314,25 @@ class PersonasController extends AppController{
 		}
 	
 	}
+
+	public function delete_persona(){
+		$this->layout = "ajax";
+		$this->loadModel('Persona');
+
+		if($this->request->is('post')){
+			$persona_id = $this->request->data['persona_id'];
+
+			$obj_persona = $this->Persona->findById($persona_id);
+
+			if($obj_persona->saveField('estado', 0)){
+				echo json_encode(array('success'=>true,'msg'=>__('Eliminado con &eacute;xito.')));
+				exit();
+			}else{
+				echo json_encode(array('success'=>false,'msg'=>__('Error inesperado.')));
+				exit();
+			}
+		}
+	}
 	
 	public function get_persona_row($persona_id){
 		$this->layout = 'ajax';

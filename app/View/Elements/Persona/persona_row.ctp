@@ -85,7 +85,7 @@
 						<td><?php echo $persona->getAttr('telefono'); ?></td>
 						<td><?php echo $persona->getAttr('movil'); ?></td>
 						<td><a><i class="icon-pencil edit-persona-trigger"></i> </a> 
-							<a href="#myModalDeletePersona" role="button" data-toggle="modal"><i class="icon-remove"></i> </a>
+							<a href="#myModalDeletePersona" role="button" data-toggle="modal"><i class="icon-remove open-model-delete-persona"></i> </a>
 							<a href="#" class="link_roles">Roles</a>
 						</td>
 					</tr>
