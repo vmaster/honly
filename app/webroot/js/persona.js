@@ -59,13 +59,15 @@ $(document).ready(function(){
 				data: {'persona_id' : persona_id},
 				dateType: 'json'
 			}).done(function(data) {
+				//alert(data);
 				if(data.success==true){
-					alert(123); return false;
+					//alert(123); return false;
 					$('.persona_row_container[persona_id='+persona_id+']').fadeOut(function (){$(this).remove()});
 					alertify.success(data.msg);
-				}/*else{
-					alertify.error(data.msg);
-				}*/	
+				}else{
+					alertify.success(data.msg);
+
+				}				
 			});
 		}
 	}
