@@ -53,22 +53,22 @@ $(document).ready(function(){
 		},
 
 		deletePersona: function(persona_id){
+
 			$.ajax({
 				type: 'post',
 				url: env_webroot_script + 'personas/delete_persona',
-				data: {'persona_id' : persona_id},
-				dateType: 'json'
-			}).done(function(data) {
-				//alert(data);
-				if(data.success==true){
-					//alert(123); return false;
+				data:{
+					'persona_id': persona_id
+				},
+				dataType: 'json'
+			}).done(function(data){
+				if(data.success == true){
 					$('.persona_row_container[persona_id='+persona_id+']').fadeOut(function (){$(this).remove()});
 					alertify.success(data.msg);
 				}else{
 					alertify.success(data.msg);
-
-				}				
-			});
+				}
+			});	
 		}
 	}
 	

@@ -332,6 +332,7 @@ class PersonasController extends AppController{
 				exit();
 			}
 		}
+		
 	}
 	
 	public function get_persona_row($persona_id){
