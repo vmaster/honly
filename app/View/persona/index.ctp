@@ -112,7 +112,12 @@ $('#container_page .pagination li.active').live('click',function(){
     var page = $(this).attr('p');
     loadData(page);
     
-}); 
+});
+
+$(document).ready( function () {
+    //$('#table_content_personas').DataTable();
+} );
+
 </script>
 <div id="persona">
 	<div id="add_edit_persona_container">
