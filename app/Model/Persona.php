@@ -146,7 +146,7 @@ App::uses('AppModel','Model');
     	return $arr_obj_persona;
     }
     
-    public function listFindPersonas($order_by='Persona.created', $search_nro_documento='',$search_nombre='',$search_tipo_persona=0, $order='DESC', $start=0, $per_page=10) {
+    public function listFindPersonas($order_by='Persona.created', $search_nro_documento='',$search_nombre='',$search_tipo_persona=0, $order='DESC', $start=0) {
     	//debug($search_tipo_persona); 
     	if($search_tipo_persona == 0){
     		$arr_obj_persona = $this->findObjects('all',array(
@@ -162,7 +162,7 @@ App::uses('AppModel','Model');
     						)
     				),
     				//'page'=> $start,
-    				'limit'=> $per_page,
+    				//'limit'=> $per_page,
     				'offset'=> $start,
     				'order'=> array($order_by.' '.$order),
     		)

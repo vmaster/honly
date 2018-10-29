@@ -15,16 +15,18 @@
     <link href="<?= ENV_WEBROOT_FULL_URL; ?>/css/jquery.ui/smoothness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
     <link href="<?= ENV_WEBROOT_FULL_URL; ?>/lib/alertify-0.3.11/css/alertify.core.css" rel="stylesheet">
     <link href="<?= ENV_WEBROOT_FULL_URL; ?>/lib/alertify-0.3.11/css/alertify.default.css" rel="stylesheet">
-	
-	<script>var env_webroot_script = '<?php echo ENV_WEBROOT_FULL_URL; ?>';</script>
+	  <link rel="stylesheet" href="<?= ENV_WEBROOT_FULL_URL; ?>js/data_table/datatables.css">
+	  
+    <script>var env_webroot_script = '<?php echo ENV_WEBROOT_FULL_URL; ?>';</script>
 
     <script src="<?= ENV_WEBROOT_FULL_URL;?>lib/jquery-1.8.1.min.js" type="text/javascript"></script>
     <script src="<?= ENV_WEBROOT_FULL_URL;?>lib/jquery_ui/jquery-ui.min.js" type="text/javascript"></script>
     <script src="<?= ENV_WEBROOT_FULL_URL;?>js/user.js" type="text/javascript"></script>
     <script src="<?= ENV_WEBROOT_FULL_URL;?>js/persona.js" type="text/javascript"></script>
     <script src="<?= ENV_WEBROOT_FULL_URL;?>js/rol_persona.js" type="text/javascript"></script>
+    
+    
     <script src="<?= ENV_WEBROOT_FULL_URL;?>js/data_table/datatables.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="<?= ENV_WEBROOT_FULL_URL; ?>js/data_table/datatables.css">
     <script src="<?= ENV_WEBROOT_FULL_URL;?>js/jquery_datepicker/jquery.ui.datepicker-es.js" type="text/javascript"></script>
     <script src="<?= ENV_WEBROOT_FULL_URL;?>lib/alertify-0.3.11/alertify.min.js" type="text/javascript"></script>
 

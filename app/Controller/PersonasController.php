@@ -58,7 +58,7 @@ class PersonasController extends AppController{
 		}
 		
 		$list_persona_all = $this->Persona->listAllPersonas($order_by, utf8_encode($search_nro_documento),utf8_encode($search_nombre),$search_tipo_persona,$order_by_or);
-		$list_persona = $this->Persona->listFindPersonas($order_by, utf8_encode($search_nro_documento),utf8_encode($search_nombre),$search_tipo_persona,$order_by_or, $start, $per_page);
+		$list_persona = $this->Persona->listFindPersonas($order_by, utf8_encode($search_nro_documento),utf8_encode($search_nombre),$search_tipo_persona,$order_by_or, $start);
 		$obj_tipo_personas = $this->TipoPersona->listAllTipoPersonas();
 		$count = count($list_persona_all);
 		$no_of_paginations = ceil($count / $per_page);

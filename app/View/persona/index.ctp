@@ -5,117 +5,14 @@ var order_by_or;
 
 $body.off('click','div#persona .edit-persona-trigger');
 	$body.on('click','div#persona .edit-persona-trigger', function(){
-		alert(1);
 		persona_id = $(this).parents('.persona_row_container').attr('persona_id');
 		//alert(persona_id); return false;
 		//tipo_persona_id = $(this).parents('.persona_row_container').attr('tipo_persona_id');
 		persona.openAddEditPersona(persona_id);
 	});
 
-$body.on('keyup','#txtBuscarNombre',function(e){
-	e.stopPropagation();
-	//$('#check_all').prop('checked', false);
-	search_nombre = $(this).val();
-	search_tipo_persona = $('#cboTipoPersona').val();
-	search_nro_documento = $('#txtNroDocumento').val();
-
-	if(search_nombre==''){
-		search_nombre = null;
-	}
-	if(search_nro_documento==''){
-		search_nro_documento = null;
-	}
-	if(typeof(search_tipo_persona) === "undefined"){
-		search_tipo_persona = 0;
-	}
-
-	$('#conteiner_all_rows').load(escape('personas/find_personas/1/'+null+'/'+null+'/'+search_tipo_persona+'/'+search_nro_documento+'/'+search_nombre),function(){
-	});
-});
-
-$body.on('change','#cboTipoPersona',function(e){
-	e.stopPropagation();
-	//$('#check_all').prop('checked', false);
-	search_tipo_persona = $(this).val();
-	search_nombre = $('#txtBuscarNombre').val();
-	search_nro_documento = $('#txtNroDocumento').val();
-
-	if(search_nombre==''){
-		search_nombre = null;
-	}
-	if(search_nro_documento==''){
-		search_nro_documento = null;
-	}
-
-	if(typeof(search_tipo_persona) === "undefined"){
-		search_tipo_persona = 0;
-	}
-	
-	$('#conteiner_all_rows').load(escape('personas/find_personas/1/'+null+'/'+null+'/'+search_tipo_persona+'/'+search_nro_documento+'/'+search_nombre),function(){
-	});
-});
-
-$body.on('keyup','#txtNroDocumento',function(e){
-	e.stopPropagation();
-	//$('#check_all').prop('checked', false);
-	search_nro_documento = $(this).val();
-	search_nombre = $('#txtBuscarNombre').val();
-	search_tipo_persona = $('#cboTipoPersona').val();
-
-	if(search_nombre==''){
-		search_nombre = null;
-	}
-	if(search_nro_documento==''){
-		search_nro_documento = null;
-	}
-	
-	if(typeof(search_tipo_persona) === "undefined"){
-		search_tipo_persona = 0;
-	} 
-	
-	$('#conteiner_all_rows').load(escape('personas/find_personas/1/'+null+'/'+null+'/'+search_tipo_persona+'/'+search_nro_documento+'/'+search_nombre),function(){
-	});
-});
-
-function loadData(page){
-    //loading_show();  
-    search_nombre = $('#txtBuscarNombre').val();
-    search_tipo_persona = $('#cboTipoPersona').val();
-	search_nro_documento = $('#txtNroDocumento').val();
-	
-	if (typeof(order_by_select) === "undefined"){
-		order_by_select = null;
-	}else{
-		order_by_select = order_by_select;
-	}
-	if (typeof(order_by_or) === "undefined"){
-		order_by_or = null;
-	}else{
-		order_by_or = order_by_or;
-	}
-
-	if(search_nombre==''){
-		search_nombre = null;
-	}
-	if(search_nro_documento==''){
-		search_nro_documento = null;
-	}
-	if(typeof(search_tipo_persona) === "undefined"){
-		search_tipo_persona = 0;
-	}         
-
-	$('#conteiner_all_rows').load(escape('personas/find_personas/'+page+'/'+order_by_select+'/'+order_by_or+'/'+search_tipo_persona+'/'+search_nro_documento+'/'+search_nombre),function(){
-		});
-}
-loadData(1);  /* For first time page load default results */
-$('#container_page .pagination li.active').live('click',function(){
-    var page = $(this).attr('p');
-    loadData(page);
-    
-});
-
 $(document).ready( function () {
-    //$('#table_content_personas').DataTable();
+    $('#example').DataTable();
 } );
 
 </script>
@@ -127,29 +24,6 @@ $(document).ready( function () {
 	    <button class="btn btn-primary btn-nuevo-persona"><i class="icon-plus"></i> <?php echo __('Nuevo Persona'); ?></button>
 		  <div class="btn-group">
 		  </div>
-	</div>
-	<div class="row">
-		<div class="span3" style="margin-left:30px;"><?php echo __('Buscar por');?>:</div>
-		<div class="span3" style="margin-left:-107px;">
-		<label><?php echo __('Nombre/R. Social');?><input type = "text" name ="txtBuscarNombre" id="txtBuscarNombre"></label>
-		</div>
-		<div class="span3">
-		<label><?php echo __('Tipo persona');?>
-			<select name="cboTipoPersona" id="cboTipoPersona"><!-- Valores según la base de datos -->
-			<option value=0>TODOS</option>
-			<option value=1>VARIOS</option>
-			<option value=2>NATURAL</option>
-			<option value=3>JURIDICA</option>
-			<?php /*foreach($obj_tipo_personas as $k => $v){ ?>
-				<option value="<?php echo $v['TipoPersona']['id']; ?>"><?php echo $v['TipoPersona']['descripcion']; ?></option>
-			<?php }	*/?>
-			
-			</select>
-		</label>
-		</div>
-		<div class="span3">
-		<label><?php echo __('Nro. Documento');?><input type = "text" name="txtNroDocumento" id="txtNroDocumento"></label>
-		</div>
 	</div>
 	<div class="well">
 	    <?php 
@@ -163,16 +37,7 @@ $(document).ready( function () {
 	      </div>
 	    <?php }?>
 	</div>
-	<div class="pagination">
-	    <ul>
-	        <li><a href="#">Prev</a></li>
-	        <li><a href="#">1</a></li>
-	        <li><a href="#">2</a></li>
-	        <li><a href="#">3</a></li>
-	        <li><a href="#">4</a></li>
-	        <li><a href="#">Next</a></li>
-	    </ul>
-	</div>
+	
 	
 	<div class="modal small hide fade" id="myModalDeletePersona" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" persona_id="">
 	    <div class="modal-header">
