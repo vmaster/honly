@@ -13,7 +13,16 @@ $body.off('click','div#persona .edit-persona-trigger');
 
 $(document).ready( function () {
     $('#example').DataTable({
+
     	//'ajax': env_webroot_script + 'personas/ajax_list_personas'
+
+    	ajax: {
+    		url: env_webroot_script + 'personas/ajax_list_personas',
+    		dataSrc: 'data'
+    		//"dataSrc": "tableData"
+    	}
+
+
     });
 } );
 

@@ -73,7 +73,7 @@ class PersonasController extends AppController{
 		$lista = "";
 		
 		
-		$arr_obj_persona = $this->findObjects('all',
+		$arr_obj_persona = $this->Persona->findObjects('all',
                 array(
                     //'fields' => array('TipoPersonaJoin.descripcion', 'Persona.nombre', 'Persona.apellido', 'Persona.email', 'Persona.nro_documento', 'Persona.sexo','Persona.celular'),
                     'joins' => array(
@@ -92,13 +92,21 @@ class PersonasController extends AppController{
                 )
             );
         $lista="";
+        $n = 0;
+
+        $html = '<a><i class="icon-pencil edit-persona-trigger"></i> </a> 
+							<a href="#myModalDeletePersona" role="button" data-toggle="modal"><i class="icon-remove open-model-delete-persona"></i> </a>
+							<a href="#" class="link_roles">Roles</a>';
+
         foreach ($arr_obj_persona as $obj_persona) {
-           $lista.= json_encode(array($obj_persona->TipoPersona->getAttr('descripcion'),$obj_persona->getAttr('nombre').' '.$obj_persona->getAttr('apellido'), $obj_persona->getAttr('email'),$obj_persona->getAttr('nro_documento'),$obj_persona->getAttr('sexo'),$obj_persona->getAttr('celular'))).',';
+           $n = $n + 1;
+           $lista.= json_encode(array($n, $obj_persona->TipoPersona->getAttr('descripcion'),$obj_persona->getAttr('nombre').' '.$obj_persona->getAttr('apellido'), $obj_persona->getAttr('email'),$obj_persona->getAttr('nro_documento'),$obj_persona->getAttr('sexo'),$obj_persona->getAttr('celular'),$html)).',';
          } 
 
          $lista = substr($lista, 0,strlen($lista) - 1);
 
          $array_final = '{"data":['.$lista.']}';
+         //debug($array_final);exit();
          return $array_final;
 	}
 	
