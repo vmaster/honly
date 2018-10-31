@@ -66,6 +66,41 @@ class PersonasController extends AppController{
 		
 		$this->set(compact('list_persona','obj_tipo_personas','page','no_of_paginations'));
 	}
+
+	public function ajax_list_personas(){
+		$this->autoRender = false;
+		$this->loadModel('Persona');
+		$lista = "";
+		
+		
+		$arr_obj_persona = $this->findObjects('all',
+                array(
+                    //'fields' => array('TipoPersonaJoin.descripcion', 'Persona.nombre', 'Persona.apellido', 'Persona.email', 'Persona.nro_documento', 'Persona.sexo','Persona.celular'),
+                    'joins' => array(
+                        array(
+                            'table' => 'tipo_personas',
+                            'alias' => 'TipoPersonaJoin',
+                            'type' => 'INNER',
+                            'conditions' => array(
+                            'TipoPersonaJoin.id = Persona.tipo_persona_id'
+                            )
+                        )
+                    ),
+                    'conditions'=>array(
+                                'Persona.estado' => 1
+                    ),
+                )
+            );
+        $lista="";
+        foreach ($arr_obj_persona as $obj_persona) {
+           $lista.= json_encode(array($obj_persona->TipoPersona->getAttr('descripcion'),$obj_persona->getAttr('nombre').' '.$obj_persona->getAttr('apellido'), $obj_persona->getAttr('email'),$obj_persona->getAttr('nro_documento'),$obj_persona->getAttr('sexo'),$obj_persona->getAttr('celular'))).',';
+         } 
+
+         $lista = substr($lista, 0,strlen($lista) - 1);
+
+         $array_final = '{"data":['.$lista.']}';
+         return $array_final;
+	}
 	
 	public function find_personas($page=null,$order_by=null,$order_by_or=null,$search_tipo_persona=0,$search_nro_documento=null,$search_nombre=null) {
 		$this->layout = 'ajax';

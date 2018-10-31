@@ -12,7 +12,9 @@ $body.off('click','div#persona .edit-persona-trigger');
 	});
 
 $(document).ready( function () {
-    $('#example').DataTable();
+    $('#example').DataTable({
+    	//'ajax': env_webroot_script + 'personas/ajax_list_personas'
+    });
 } );
 
 </script>
@@ -37,8 +39,7 @@ $(document).ready( function () {
 	      </div>
 	    <?php }?>
 	</div>
-	
-	
+
 	<div class="modal small hide fade" id="myModalDeletePersona" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" persona_id="">
 	    <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
