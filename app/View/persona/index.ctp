@@ -12,7 +12,7 @@ $body.off('click','div#persona .edit-persona-trigger');
 	});
 
 $(document).ready( function () {
-    $('#example').DataTable({
+    $('#t_persona').DataTable({
 
     	//'ajax': env_webroot_script + 'personas/ajax_list_personas'
 

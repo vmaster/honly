@@ -1,4 +1,4 @@
-<table id="example" class="display" style="width:100%">
+<table id="t_persona" class="display" style="width:100%">
 	        <thead>
 	            <tr>
 	              <th><?php echo __('ID'); ?></th>

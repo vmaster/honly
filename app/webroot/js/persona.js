@@ -277,8 +277,8 @@ $(document).ready(function(){
 	/* Query Events of Roles */
 	$body.off('click','div#persona .link_roles');
 	$body.on('click','div#persona .link_roles', function(){
-		persona_id = $(this).parents('.persona_row_container').attr('persona_id');
-		persona_nombre = $(this).parents('.persona_row_container').attr('persona_nombre');
+		persona_id = $('#data_rol').attr('persona_id');
+		persona_nombre = $('#data_rol').attr('persona_nombre');
 		$('div#persona').load(env_webroot_script + escape('RolPersonas/list_roles_personas/'+persona_id+'/'+persona_nombre),function(){
 		});
 	});
