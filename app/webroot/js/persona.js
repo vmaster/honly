@@ -279,7 +279,7 @@ $(document).ready(function(){
 	$body.on('click','div#persona .link_roles', function(){
 		persona_id = $('#data_rol').attr('persona_id');
 		persona_nombre = $('#data_rol').attr('persona_nombre');
-		$('div#persona').load(env_webroot_script + escape('RolPersonas/list_roles_personas/'+persona_id+'/'+persona_nombre),function(){
+		$('div.content').load(env_webroot_script + escape('RolPersonas/list_roles_personas/'+persona_id+'/'+persona_nombre),function(){
 		});
 	});
 	

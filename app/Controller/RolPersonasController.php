@@ -152,14 +152,15 @@ class RolPersonasController extends AppController{
 				}
 				
 				if(isset($persona_id)){
-					$this->request->data['RolPersona']['persona_id'] = $persona_id;
+					$newRolPersona['RolPersona']['persona_id'] = $persona_id;
+					$newRolPersona['RolPersona']['rol_id'] = $this->request->data['RolPersona']['role_id'];
 				}
 	
 				//$this->Persona->set($this->request->data);
 				//$this->Persona->setFields();
 	
 				$this->RolPersona->create();
-				if ($this->RolPersona->save($this->request->data)) {
+				if ($this->RolPersona->save($newRolPersona)) {
 					//$persona_id = $this->RolPersona->id;
 					//$this->RolPersona->agregarRolPersona($persona_id,$role_id);
 					echo json_encode(array('success'=>true,'msg'=>__('Persona fue agregada con &eacute;xito.'),'Persona_id'=>$persona_id));

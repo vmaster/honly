@@ -6,6 +6,7 @@ $(document).ready(function(){
 	rol_persona = {
 	
 		openAddEditRolPersona: function(persona_id, persona_nombre){
+			alert("id: " + persona_id);return false;
 			$('div#rol_persona #add_edit_rol_persona_container').load(escape('RolRolPersonas/add_edit_rol_persona/'+persona_id+'/'+persona_nombre),function(){
 				
 			});
@@ -22,6 +23,7 @@ $(document).ready(function(){
 	$body.on('click', 'div#rol_persona .btn-nuevo-rol-persona' , function(){
 		persona_id = $('div#rol_persona').attr('persona_id');
 		persona_nombre = $('div#rol_persona').attr('persona_nombre');
+
 		persona.openAddEditRolPersona(persona_id, persona_nombre);
 	});
 	
