@@ -35,10 +35,10 @@
 		<div class="row" style="text-align:center;">
 			<div class="span9">
 				<button type="button" class="btn btn-large btn-success btn_crear_rol_persona_trigger" style="margin-right:17px;"><?php echo __('Guardar'); ?></button>
-				<button type="button" class="btn btn-large btn-cancelar-crear-rol_persona"><?php echo __('Cancelar');?></button>
+				<button type="button" class="btn btn-large btn-cancelar-crear-rol-persona"><?php echo __('Cancelar');?></button>
 			</div>
 		</div>
 	</section>
 	<?php echo $this->Form->end(); ?>
+	<hr>
 </div>
-<hr>

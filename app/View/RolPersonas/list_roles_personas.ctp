@@ -26,7 +26,12 @@ var order_by_or;
 					</div>
 					
 					<div class="btn-toolbar">
-					    <button class="btn btn-primary btn-nuevo-rol-persona"><i class="icon-plus"></i> <?php echo __('Nuevo Rol'); ?></button>
+						<?php
+						 $total_roles_user = count($list_rol_persona);
+						 $total_roles = $total_roles;
+						 if($total_roles_user < $total_roles ){ ?>
+					    	<button class="btn btn-primary btn-nuevo-rol-persona"><i class="icon-plus"></i> <?php echo __('Nuevo Rol'); ?></button>
+					    <?php } ?>
 					  <div class="btn-group">
 					  </div>
 					</div>
@@ -37,9 +42,9 @@ var order_by_or;
 							echo __('No hay roles');
 						}else{ ?>  
 					      <div id = "conteiner_all_rows">
-					      <?php 
-					      	echo $this->element('RolPersona/rol_persona_row');
-					 	  ?>
+						      <?php 
+						      	echo $this->element('RolPersona/rol_persona_row');
+						 	  ?>
 					      </div>
 					    <?php }?>
 					</div>

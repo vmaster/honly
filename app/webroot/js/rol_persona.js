@@ -14,8 +14,8 @@ $(document).ready(function(){
 	}
 	
 	/* Ocultar formulario Crear RolPersona*/
-	$body.on('click','div#div-crear-persona .btn-cancelar-crear-persona', function(){
-		$('#div-crear-persona').fadeOut();
+	$body.on('click','div#div-crear-rol-persona .btn-cancelar-crear-rol-persona', function(){
+		$('#div-crear-rol-persona').fadeOut();
 	});
 	
 	/* Mostrar formulario: Crear RolRolPersona */
@@ -27,13 +27,9 @@ $(document).ready(function(){
 		persona.openAddEditRolPersona(persona_id, persona_nombre);
 	});
 	
-	/* Ocultar formulario Crear RolRolPersona*/
-	$body.on('click','div#div-crear-rol-persona .btn-cancelar-crear-persona', function(){
-		$('#add_edit_persona').fadeOut();
-	});
-	
 	$body.off('click','.btn_crear_rol_persona_trigger');
 	$body.on('click','.btn_crear_rol_persona_trigger',function(){
+		$persona_id = $(this).parents('#rol_persona').attr('persona_id');
 		cambio=false;
 		$form = $(this).parents('form').eq(0);
 		$.ajax({
@@ -43,11 +39,11 @@ $(document).ready(function(){
 			type: 'post'
 		}).done(function(data){
 			if(data.success==true){
-				$('#div-crear-persona').fadeOut();
-				$('#conteiner_all_rows').load(env_webroot_script + escape('rol_personas/find_personas/1/'+null+'/'+null+'/'+''+'/'+''),function(){
+				$('#div-crear-rol-persona').fadeOut();
+				$('#conteiner_all_rows').load(env_webroot_script + escape('rol_personas/find_rol_personas/'+ persona_id),function(){
 					//$('#dtable_personas').DataTable();
 				});
-				toastr.success(data.msg);
+				//toastr.success(data.msg);
 			}else{
 				$.each( data.validation, function( key, value ) {
 					toastr.error(value[0]);

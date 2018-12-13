@@ -6,6 +6,7 @@ class RolPersonasController extends AppController{
 	public function list_roles_personas($persona_id= 0,$persona_nombre='', $page=null,$order_by=null,$order_by_or=null) {
 		$this->layout = "ajax";
 		$this->loadModel('RolPersona');
+		$this->loadModel('Role');
 		
 		$page = 0;
 		//$page -= 1;
@@ -25,104 +26,48 @@ class RolPersonasController extends AppController{
 				$persona_nombre = $persona_nombre;
 		}
 		
-		
 		if(isset($persona_id) && intval($persona_id)){
 			$persona_id = $persona_id;
 		}
+
+		$list_roles = $this->Role->listRoles();
+		$total_roles =  count($list_roles);
+
+
 		//$list_rol_persona_all = $this->RolPersona->listAllRoles($order_by, $order_by_or, $persona_id);
 		$list_rol_persona = $this->RolPersona->listFindRoles($order_by, $order_by_or, $persona_id);
 		/*$count = count($list_rol_persona_all);
 		$no_of_paginations = ceil($count / $per_page);
 		$page = $page + 1;*/
 		
-		$this->set(compact('list_rol_persona','persona_id','persona_nombre'));
+		$this->set(compact('list_rol_persona','persona_id','persona_nombre', 'total_roles'));
 	}
 	
-	public function find_personas($page=null,$order_by=null,$order_by_or=null,$search_tipo_persona=0,$search_nro_documento=null,$search_nombre=null) {
+	public function find_rol_personas($persona_id=0) {
 		$this->layout = 'ajax';
-		$this->loadModel('Persona');
-		$this->loadModel('TipoPersona');
-		$page = $page;
-		$page -= 1;
-		$per_page = 10;
-		$start = $page * $per_page;
-		/*if(isset($order_by)){
-			$order_by = $order_by;
-		}else{
-			$order_by = 'Persona.created';
-		}*/
-		$order_by = 'Persona.created';
-	
-		if($order_by_or!=NULL && isset($order_by_or) && $order_by_or!='null'){
-			$order_by_or = $order_by_or;
-		}else{
-			$order_by_or = 'DESC';
-		}
-	
-		/*if($order_by=='title'){
-			$order_by = 'Bit.title';
-		}elseif($order_by=='username'){
-			$order_by = 'UserJoin.username';
-		}elseif($order_by=='home'){
-			$order_by = 'Bit.view_home';
-		}elseif($order_by=='status'){
-			$order_by = 'Bit.status';
-		}else{
-			$order_by = 'Bit.created';
-		}*/
-	
+		$this->loadModel('RolPersona');
+		
+		$order_by='RolPersona.id';
+		$order='DESC';
+
 		if($this->request->is('get')){
-		/*if($search_tipo_persona!=''){
-				$search_tipo_persona = $search_tipo_persona;
+					
+
+			if($persona_id!=0){
+				$persona_id = $persona_id;
 			}else{
-				$search_tipo_persona = '';
-			}*/
-			
-			/*if($search_nro_documento!=''){
-				$search_nro_documento = $search_nro_documento;
-			}else{
-				$search_nro_documento = '';
-			}
-			
-			if($search_nombre!=''){
-				$search_nombre = $search_nombre;
-			}else{
-				$search_nombre = '';
-			}*/
-			if($search_tipo_persona!= 0){
-				$search_tipo_persona = $search_tipo_persona;
-			}else{
-				$search_tipo_persona = 0;
-			}
-			
-			if($search_nro_documento == 'null'){
-				$search_nro_documento = '';
-			}else{
-				$search_nro_documento = $search_nro_documento;
-			}
-				
-			if($search_nombre == 'null'){
-				$search_nombre = '';
-			}else{
-				$search_nombre = $search_nombre;
+				$persona_id = 0;	
 			}
 	
 		}else{
 			$search_nombre = '';
-			$search_tipo_persona = 0;
-			$search_nro_documento = '';
 		}
-		/*
-		 $this->paginate = array('conditions'=>array($select_by .' LIKE "%'. $search .'%"'),'limit'=>15, 'order' => array($order_by => 'desc'));
-		$seo_journals = $this->paginate('Journal');
-		$this->set('seo_journals',$seo_journals);
-		*/
-		$list_persona_all = $this->Persona->listAllPersonas($order_by, utf8_encode($search_nro_documento),utf8_encode($search_nombre),$search_tipo_persona,$order_by_or);
-		$list_persona = $this->Persona->listFindPersonas($order_by, utf8_encode($search_nro_documento),utf8_encode($search_nombre),$search_tipo_persona, $order_by_or, $start, $per_page);
-		$count = count($list_persona_all);
-		$no_of_paginations = ceil($count / $per_page);
-		$page = $page+1;
-		$this->set(compact('list_persona','page','no_of_paginations'));
+
+		
+		$list_rol_persona = $this->RolPersona->listFindRoles($order_by, $order, $persona_id);
+		
+		
+		$this->set(compact('list_rol_persona','persona_id'));
 	}
 	
 	

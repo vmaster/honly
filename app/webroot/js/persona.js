@@ -63,7 +63,8 @@ $(document).ready(function(){
 				dataType: 'json'
 			}).done(function(data){
 				if(data.success == true){
-					$('.persona_row_container[persona_id='+persona_id+']').fadeOut(function (){$(this).remove()});
+					$('#data_rol[persona_id'+persona_id+']').fadeOut(function(){$(this).parents('tr').remove()});
+					//$('.persona_row_container[persona_id='+persona_id+']').fadeOut(function (){$(this).remove()});
 					alertify.success(data.msg);
 				}else{
 					alertify.success(data.msg);
@@ -147,7 +148,7 @@ $(document).ready(function(){
 	$body.off('click','div#persona .open-model-delete-persona');
 	$body.on('click','div#persona .open-model-delete-persona', function(){
 		//alert();
-		persona_id = $(this).parents('.persona_row_container').attr('persona_id');
+		persona_id = $(this).parents('#data_rol').attr('persona_id');
 		$('div#myModalDeletePersona').attr('persona_id', persona_id);
 	});
 	
@@ -277,8 +278,9 @@ $(document).ready(function(){
 	/* Query Events of Roles */
 	$body.off('click','div#persona .link_roles');
 	$body.on('click','div#persona .link_roles', function(){
-		persona_id = $('#data_rol').attr('persona_id');
-		persona_nombre = $('#data_rol').attr('persona_nombre');
+		persona_id = $(this).parent('#data_rol').attr('persona_id');
+		persona_nombre = $(this).parent('#data_rol').attr('persona_nombre');
+
 		$('div.content').load(env_webroot_script + escape('RolPersonas/list_roles_personas/'+persona_id+'/'+persona_nombre),function(){
 		});
 	});
