@@ -97,7 +97,7 @@ class PersonasController extends AppController{
         foreach ($arr_obj_persona as $obj_persona) {
            $n = $n + 1;
 
-           $html = '<div id ="data_rol" persona_id="'.$obj_persona->getAttr('id').'" persona_nombre = "'.$obj_persona->getAttr('nombre').' '.$obj_persona->getAttr('apellido').'"><a><i class="icon-pencil edit-persona-trigger"></i> </a> 
+           $html = '<div id ="data_rol" class="div-row-persona" persona_id="'.$obj_persona->getAttr('id').'" persona_nombre = "'.$obj_persona->getAttr('nombre').' '.$obj_persona->getAttr('apellido').'"><a><i class="icon-pencil edit-persona-trigger"></i> </a> 
 							<a href="#myModalDeletePersona" role="button" data-toggle="modal"><i class="icon-remove open-model-delete-persona"></i> </a>
 							<a href="#" class="link_roles">Roles</a></div>';
 
