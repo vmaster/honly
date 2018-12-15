@@ -21,7 +21,7 @@
             <li ><a href="403.html">Usuarios</a></li>
             <li ><a href="404.html">Habitaciones</a></li>
             <li ><a href="500.html">Productos</a></li>
-            <li ><a href="503.html">Servicios</a></li>
+            <li ><a href=<?php echo ENV_WEBROOT_FULL_URL.'estado_habitaciones/'; ?>>Estado de habitación</a></li>
             <li ><a href=<?php echo ENV_WEBROOT_FULL_URL.'personas/'; ?> >Personas</a></li>
         </ul>
 

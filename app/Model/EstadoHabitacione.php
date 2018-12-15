@@ -1,6 +1,6 @@
 <?php
 App::uses('AppModel','Model');
-  class Empresa extends AppModel {
+  class EstadoHabitacione extends AppModel {
     public $name = 'EstadoHabitacione';
 
 

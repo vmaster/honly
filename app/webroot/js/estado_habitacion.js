@@ -4,13 +4,13 @@ $(document).ready(function(){
 	$body = $('body');
 	
 	estado_habitacion = {
-		openAddEditEstadoHabitacione: function(estado_habitacion_id){
+		openAddEditEstadoHabitacion: function(estado_habitacion_id){
 			if(estado_habitacion_id == undefined || !estado_habitacion_id) {
 				estado_habitacion_id ='';
 			}
 			
 			$('div#estado_habitacion #add_edit_estado_habitacion_container').unbind();
-			$('div#estado_habitacion #add_edit_estado_habitacion_container').load(env_webroot_script + 'estado_habitacions/add_edit_estado_habitacion/'+estado_habitacion_id,function(){
+			$('div#estado_habitacion #add_edit_estado_habitacion_container').load(env_webroot_script + 'estado_habitaciones/add_edit_estado_habitacion/'+estado_habitacion_id,function(){
 
 			});
 		},
@@ -18,7 +18,7 @@ $(document).ready(function(){
 		deleteEstadoHabitacione: function(estado_habitacion_id){
 			$.ajax({
 				type: 'post',
-				url: env_webroot_script + 'estado_habitacions/delete_estado_habitacion',
+				url: env_webroot_script + 'estado_habitaciones/delete_estado_habitacion',
 				data:{
 					'estado_habitacion_id': estado_habitacion_id
 				},
@@ -43,8 +43,8 @@ $(document).ready(function(){
 			}).done(function(data){
 				if(data.success==true){
 					$('#add_edit_estado_habitacion').hide();
-					$('#conteiner_all_rows').load(env_webroot_script + escape('estado_habitacions/find_estado_habitacions/1/'+null+'/'+null+'/'+''+'/'+''),function(){
-						$('#table_content_estado_habitacions').DataTable();
+					$('#conteiner_all_rows').load(env_webroot_script + escape('estado_habitaciones/find_estado_habitaciones/1/'+null+'/'+null+'/'+''+'/'+''),function(){
+						$('#table_content_estado_habitaciones').DataTable();
 					});
 					alertify.success(data.msg);
 				}else{
@@ -62,7 +62,7 @@ $(document).ready(function(){
 		saveEstadoHabitacioneModal: function(){
 			$form = $('form#form_create_estado_habitacion').eq(0);
 			$.ajax({
-				url: env_webroot_script + 'estado_habitacions/add_estado_habitacion',
+				url: env_webroot_script + 'estado_habitaciones/add_estado_habitacion',
 				data: $form.serialize(),
 				dataType: 'json',
 				type: 'post'
@@ -93,7 +93,7 @@ $(document).ready(function(){
 	$body.off('click','div#estado_habitacion .btn-nuevo-estado-habitacion');
 	$body.on('click', 'div#estado_habitacion .btn-nuevo-estado-habitacion' , function(){
 		estado_habitacion_id = $(this).attr('estado_habitacion_id');
-		estado_habitacion.openAddEditEstadoHabitacione(estado_habitacion_id);
+		estado_habitacion.openAddEditEstadoHabitacion(estado_habitacion_id);
 	});
 	
 	/* Ocultar formulario Crear EstadoHabitacione*/
@@ -117,7 +117,7 @@ $(document).ready(function(){
 	$body.off('click','div#estado_habitacion .edit-estado-habitacion-trigger');
 	$body.on('click','div#estado_habitacion .edit-estado-habitacion-trigger', function(){
 		estado_habitacion_id = $(this).parents('.estado_habitacion_row_container').attr('estado_habitacion_id');
-		estado_habitacion.openAddEditEstadoHabitacione(estado_habitacion_id);
+		estado_habitacion.openAddEditEstadoHabitacion(estado_habitacion_id);
 	});
 	
 	$body.off('click','div#estado_habitacion .open-model-delete-estado-habitacion');
@@ -126,9 +126,9 @@ $(document).ready(function(){
 		$('div#myModalDeleteEstadoHabitacion').attr('estado_habitacion_id', estado_habitacion_id);
 	});
 	
-	$body.off('click','div#myModalDeleteEstadoHabitacione .eliminar-estado-habitacion-trigger');
-	$body.on('click','div#myModalDeleteEstadoHabitacione .eliminar-estado-habitacion-trigger', function(){
-		estado_habitacion_id = $('div#myModalDeleteEstadoHabitacione').attr('estado_habitacion_id');
+	$body.off('click','div#myModalDeleteEstadoHabitacion .eliminar-estado-habitacion-trigger');
+	$body.on('click','div#myModalDeleteEstadoHabitacion .eliminar-estado-habitacion-trigger', function(){
+		estado_habitacion_id = $('div#myModalDeleteEstadoHabitacion').attr('estado_habitacion_id');
 		estado_habitacion.deleteEstadoHabitacione(estado_habitacion_id);
 	});
 	
@@ -159,13 +159,13 @@ $(document).ready(function(){
 	$body = $('body');
 	
 	estado_habitacion = {
-		openAddEditEstadoHabitacione: function(estado_habitacion_id){
+		openAddEditEstadoHabitacion: function(estado_habitacion_id){
 			if(estado_habitacion_id == undefined || !estado_habitacion_id) {
 				estado_habitacion_id ='';
 			}
 			
 			$('div#estado_habitacion #add_edit_estado_habitacion_container').unbind();
-			$('div#estado_habitacion #add_edit_estado_habitacion_container').load(env_webroot_script + 'estado_habitacions/add_edit_estado_habitacion/'+estado_habitacion_id,function(){
+			$('div#estado_habitacion #add_edit_estado_habitacion_container').load(env_webroot_script + 'estado_habitaciones/add_edit_estado_habitacion/'+estado_habitacion_id,function(){
 
 			});
 		},
@@ -173,7 +173,7 @@ $(document).ready(function(){
 		deleteEstadoHabitacione: function(estado_habitacion_id){
 			$.ajax({
 				type: 'post',
-				url: env_webroot_script + 'estado_habitacions/delete_estado_habitacion',
+				url: env_webroot_script + 'estado_habitaciones/delete_estado_habitacion',
 				data:{
 					'estado_habitacion_id': estado_habitacion_id
 				},
@@ -198,8 +198,8 @@ $(document).ready(function(){
 			}).done(function(data){
 				if(data.success==true){
 					$('#add_edit_estado_habitacion').hide();
-					$('#conteiner_all_rows').load(env_webroot_script + escape('estado_habitacions/find_estado_habitacions/1/'+null+'/'+null+'/'+''+'/'+''),function(){
-						$('#table_content_estado_habitacions').DataTable();
+					$('#conteiner_all_rows').load(env_webroot_script + escape('estado_habitaciones/find_estado_habitaciones/1/'+null+'/'+null+'/'+''+'/'+''),function(){
+						$('#table_content_estado_habitaciones').DataTable();
 					});
 					alertify.success(data.msg);
 				}else{
@@ -217,7 +217,7 @@ $(document).ready(function(){
 		saveEstadoHabitacioneModal: function(){
 			$form = $('form#form_create_estado_habitacion').eq(0);
 			$.ajax({
-				url: env_webroot_script + 'estado_habitacions/add_estado_habitacion',
+				url: env_webroot_script + 'estado_habitaciones/add_estado_habitacion',
 				data: $form.serialize(),
 				dataType: 'json',
 				type: 'post'
@@ -248,7 +248,7 @@ $(document).ready(function(){
 	$body.off('click','div#estado_habitacion .btn-nuevo-estado-habitacion');
 	$body.on('click', 'div#estado_habitacion .btn-nuevo-estado-habitacion' , function(){
 		estado_habitacion_id = $(this).attr('estado_habitacion_id');
-		estado_habitacion.openAddEditEstadoHabitacione(estado_habitacion_id);
+		estado_habitacion.openAddEditEstadoHabitacion(estado_habitacion_id);
 	});
 	
 	/* Ocultar formulario Crear EstadoHabitacione*/
@@ -272,7 +272,7 @@ $(document).ready(function(){
 	$body.off('click','div#estado_habitacion .edit-estado-habitacion-trigger');
 	$body.on('click','div#estado_habitacion .edit-estado-habitacion-trigger', function(){
 		estado_habitacion_id = $(this).parents('.estado_habitacion_row_container').attr('estado_habitacion_id');
-		estado_habitacion.openAddEditEstadoHabitacione(estado_habitacion_id);
+		estado_habitacion.openAddEditEstadoHabitacion(estado_habitacion_id);
 	});
 	
 	$body.off('click','div#estado_habitacion .open-model-delete-estado-habitacion');
@@ -281,9 +281,9 @@ $(document).ready(function(){
 		$('div#myModalDeleteEstadoHabitacion').attr('estado_habitacion_id', estado_habitacion_id);
 	});
 	
-	$body.off('click','div#myModalDeleteEstadoHabitacione .eliminar-estado-habitacion-trigger');
-	$body.on('click','div#myModalDeleteEstadoHabitacione .eliminar-estado-habitacion-trigger', function(){
-		estado_habitacion_id = $('div#myModalDeleteEstadoHabitacione').attr('estado_habitacion_id');
+	$body.off('click','div#myModalDeleteEstadoHabitacion .eliminar-estado-habitacion-trigger');
+	$body.on('click','div#myModalDeleteEstadoHabitacion .eliminar-estado-habitacion-trigger', function(){
+		estado_habitacion_id = $('div#myModalDeleteEstadoHabitacion').attr('estado_habitacion_id');
 		estado_habitacion.deleteEstadoHabitacione(estado_habitacion_id);
 	});
 	
