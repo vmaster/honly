@@ -55,73 +55,16 @@ class EstadoHabitacionesController extends AppController{
 		$this->set(compact('list_estado_habitacion','page','no_of_paginations'));
 	}
 	
-	public function find_estado_habitacions($page=null,$order_by=null,$order_by_or=null,$search_descripcion=null) {
+	public function find_estado_habitaciones() {
 		$this->layout = 'ajax';
 		$this->loadModel('EstadoHabitacione');
-		$page = $page;
-		$page -= 1;
-		$per_page = 10000;
-		$start = $page * $per_page;
-		/*if(isset($order_by)){
-			$order_by = $order_by;
-		}else{
-			$order_by = 'Persona.created';
-		}*/
-		$order_by = 'EstadoHabitacione.created';
-	
-		if($order_by_or!=NULL && isset($order_by_or) && $order_by_or!='null'){
-			$order_by_or = $order_by_or;
-		}else{
-			$order_by_or = 'DESC';
-		}
-	
-		/*if($order_by=='title'){
-			$order_by = 'Bit.title';
-		}elseif($order_by=='username'){
-			$order_by = 'UserJoin.username';
-		}elseif($order_by=='home'){
-			$order_by = 'Bit.view_home';
-		}elseif($order_by=='status'){
-			$order_by = 'Bit.status';
-		}else{
-			$order_by = 'Bit.created';
-		}*/
-	
-		if($this->request->is('get')){
-		/*if($search_tipo_persona!=''){
-				$search_tipo_persona = $search_tipo_persona;
-			}else{
-				$search_tipo_persona = '';
-			}*/
-			
-			/*if($search_nro_documento!=''){
-				$search_nro_documento = $search_nro_documento;
-			}else{
-				$search_nro_documento = '';
-			}
-			
-			if($search_descripcion!=''){
-				$search_descripcion = $search_descripcion;
-			}else{
-				$search_descripcion = '';
-			}*/
-			
-			if($search_descripcion == 'null'){
-				$search_descripcion = '';
-			}else{
-				$search_descripcion = $search_descripcion;
-			}
-	
-		}else{
-			$search_descripcion = '';
-		}
 
-		$list_estado_habitacion_all = $this->EstadoHabitacione->listAllEstadoHabitaciones($order_by, utf8_encode($search_descripcion),$order_by_or);
-		$list_estado_habitacion = $this->EstadoHabitacione->listFindEstadoHabitaciones($order_by, utf8_encode($search_descripcion),$order_by_or, $start, $per_page);
-		$count = count($list_estado_habitacion_all);
-		$no_of_paginations = ceil($count / $per_page);
-		$page = $page+1;
-		$this->set(compact('list_estado_habitacion','page','no_of_paginations'));
+		$order_by='EstadoHabitacione.created';
+		$order = 'DESC';
+	
+		$list_estado_habitacion = $this->EstadoHabitacione->listFindEstadoHabitaciones($order_by, $order);
+		
+		$this->set(compact('list_estado_habitacion'));
 	}
 	
 	
@@ -154,6 +97,8 @@ class EstadoHabitacionesController extends AppController{
 			}else{
 				//insert
 				$error_validation = '';
+
+				$this->request->data['EstadoHabitacione']['estado']= 1;
 				
 				$this->EstadoHabitacione->create();
 				if ($this->EstadoHabitacione->save($this->request->data)) {

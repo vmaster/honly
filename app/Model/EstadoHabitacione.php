@@ -46,15 +46,12 @@ App::uses('AppModel','Model');
         return $arr_obj_estado_habitacione;
     }
     
-    public function listFindEstadoHabitaciones($order_by='Trabajadore.created', $search_descripcion='',$order='DESC', $start=0, $per_page=10) {
+    public function listFindEstadoHabitaciones($order_by='EstadoHabitacione.created', $order='DESC') {
             $arr_obj_estado_habitacione = $this->findObjects('all',array(
                     'conditions'=>array(
-                            'EstadoHabitacione.descripcion LIKE'=> '%'.$search_descripcion.'%',
+                           // 'EstadoHabitacione.descripcion LIKE'=> '%'.$search_descripcion.'%',
                             'EstadoHabitacione.estado != ' => 0
                     ),
-                    //'page'=> $start,
-                    'limit'=> $per_page,
-                    'offset'=> $start,
                     'order'=> array($order_by.' '.$order),
             )
             );

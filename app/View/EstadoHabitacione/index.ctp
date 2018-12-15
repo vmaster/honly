@@ -1,68 +1,26 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-$('#table_content_estado_habitaciones').DataTable({
- 	dom: 'T<"clear">lfrtip',
-	tableTools: {
-		"sSwfPath": env_webroot_script + "/lib/data.tables-1.10.6/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
-		"aButtons": [
-                "copy",
-                "csv",
-                "xls",
-                "pdf"
-                /*{
-                    "sExtends":    "collection",
-                    "aButtons":    [ "csv", "xls", "pdf" ]
-                }*/
-        ]
-	}
-});
-	
-$body = $('body');
-var order_by_select;
-var order_by_or;
-
-$body.on('keyup','#txtBuscarNombre',function(e){
-	e.stopPropagation();
-	//$('#check_all').prop('checked', false);
-	search_nombre = $(this).val();
-
-	if(search_nombre==''){
-		search_nombre = null;
-	}
-
-	$('#conteiner_all_rows').load(env_webroot_script + escape('estado_habitaciones/find_estado_habitaciones/1/'+null+'/'+null+'/'+search_nombre),function(){
+	$('#table_content_estado_habitaciones').DataTable({
+	 	dom: 'T<"clear">lfrtip',
+		tableTools: {
+			"sSwfPath": env_webroot_script + "/lib/data.tables-1.10.6/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
+			"aButtons": [
+	                "copy",
+	                "csv",
+	                "xls",
+	                "pdf"
+	                /*{
+	                    "sExtends":    "collection",
+	                    "aButtons":    [ "csv", "xls", "pdf" ]
+	                }*/
+	        ]
+		}
 	});
-});
-
-function loadData(page){
-    //loading_show();  
-    search_nombre = $('#txtBuscarNombre').val();
-	
-	if (typeof(order_by_select) === "undefined"){
-		order_by_select = null;
-	}else{
-		order_by_select = order_by_select;
-	}
-	if (typeof(order_by_or) === "undefined"){
-		order_by_or = null;
-	}else{
-		order_by_or = order_by_or;
-	}
-
-	if(search_nombre==''){
-		search_nombre = null;
-	}
-
-	$('#conteiner_all_rows').load(env_webroot_script + escape('estado_habitaciones/find_estado_habitaciones/'+page+'/'+order_by_select+'/'+order_by_or+'/'+search_nombre),function(){
-		});
-}
-//loadData(1);  /* For first time page load default results */
-$('#container_page .pagination li.active').live('click',function(){
-    var page = $(this).attr('p');
-    loadData(page);
-    
-});
+		
+	$body = $('body');
+	var order_by_select;
+	var order_by_or;
 
 });
 </script>
@@ -99,11 +57,11 @@ $('#container_page .pagination li.active').live('click',function(){
 	<div class="well">
 	<div id = "conteiner_all_rows">
 	<?php 
-	if(empty($list_estado_habitacione)){ 
+	if(empty($list_estado_habitacion)){ 
 		echo __('No hay datos de Estados de Habitaciones');
 	}else{ ?>  
 	  <?php 
-	  	echo $this->element('EstadoHabitacione/estado_habitacione_row');
+	  	echo $this->element('EstadoHabitacione/estado_habitacion_row');
 		  ?>
 	<?php }?>
 	</div>

@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="span3 col-md-3 col-sm-6 col-xs-6">
 				<?php echo "<label id='lblNombreEstadoHabitacione'>".__('Nombre de EstadoHabitacione')."</label>"; ?>
-				<?php echo $this->Form->input('nombre', array('div' => false, 'label' => false, 'class'=> 'txtNombreEstadoHabitacione form-control','id' =>'txtEstadoHabitacioneMant','style'=>'text-transform:uppercase;', 'onkeyup'=>'javascript:this.value=this.value.toUpperCase();')); ?>
+				<?php echo $this->Form->input('descripcion', array('div' => false, 'label' => false, 'class'=> 'txtNombreEstadoHabitacione form-control','id' =>'txtEstadoHabitacioneMant','style'=>'text-transform:uppercase;', 'onkeyup'=>'javascript:this.value=this.value.toUpperCase();')); ?>
 			</div>
 		</div>
 		<br>
