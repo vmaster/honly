@@ -1,5 +1,5 @@
 <div class="container div-crear-estado-habitacion form" id="div-crear-estado-habitacion">
-	<?php echo $this->Form->create('EstadoHabitacione',array('method'=>'post', 'id'=>'add_edit_estado-habitacion'));?>
+	<?php echo $this->Form->create('EstadoHabitacione',array('method'=>'post', 'id'=>'add_edit_estado_habitacion'));?>
 	<section>
 		<div class="row">
 			<div class="span3 col-md-3 col-sm-6 col-xs-6">

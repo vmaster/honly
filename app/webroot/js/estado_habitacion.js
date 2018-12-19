@@ -16,7 +16,7 @@ $(document).ready(function(){
 			});
 		},
 		
-		deleteEstadoHabitacione: function(estado_habitacion_id){
+		deleteEstadoHabitacion: function(estado_habitacion_id){
 			$.ajax({
 				type: 'post',
 				url: env_webroot_script + 'estado_habitaciones/delete_estado_habitacion',
@@ -43,7 +43,7 @@ $(document).ready(function(){
 				type: 'post'
 			}).done(function(data){
 				if(data.success==true){
-					$('#add_edit_estado_habitacion_container').hide();
+					$('#add_edit_estado_habitacion').hide();
 					$('#conteiner_all_rows').load(env_webroot_script + escape('estado_habitaciones/find_estado_habitaciones/1/'+null+'/'+null+'/'+''+'/'+''),function(){
 						$('#table_content_estado_habitaciones').DataTable();
 					});
@@ -123,7 +123,7 @@ $(document).ready(function(){
 	$body.off('click','div#myModalDeleteEstadoHabitacion .eliminar-estado-habitacion-trigger');
 	$body.on('click','div#myModalDeleteEstadoHabitacion .eliminar-estado-habitacion-trigger', function(){
 		estado_habitacion_id = $('div#myModalDeleteEstadoHabitacion').attr('estado_habitacion_id');
-		estado_habitacion.deleteEstadoHabitacione(estado_habitacion_id);
+		estado_habitacion.deleteEstadoHabitacion(estado_habitacion_id);
 	});
 	
 	/* CREAR EMPRESA DESDE UN MODAL (EN EL FORMULARIO CREAR INFORME) */
