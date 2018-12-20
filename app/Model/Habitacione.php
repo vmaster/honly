@@ -21,23 +21,23 @@ App::uses('AppModel','Model');
     );
     
     public $validate = array(
-            'descripcion'    => array(
+            'nro_habitacion'    => array(
                     'notempty' => array(
                             'rule' => array('notEmpty'),
-                            'message' => 'La descripcion es requerido'
+                            'message' => 'El num de habitación es requerido'
                     ),
                     'unique' => array(
                             'rule' => array('isUnique'),
-                            'message' => 'El estado ya existe'
+                            'message' => 'El Num de habitación ya existe'
                     )
             )
     );
     
     
-  public function listAllHabitaciones($order_by='Habitacione.created', $search_descripcion='',$order='DESC') {
+  public function listAllHabitaciones($order_by='Habitacione.created', $search_nro_habitacion='',$order='DESC') {
             $arr_obj_habitacione = $this->findObjects('all',array(
                     'conditions'=>array(
-                                    'Habitacione.descripcion LIKE'=> '%'.$search_descripcion.'%',
+                                    'Habitacione.nro_habitacion LIKE'=> '%'.$search_nro_habitacion.'%',
                                     'Habitacione.estado != ' => 0
                     ),
                     'order'=> array($order_by.' '.$order)
@@ -49,7 +49,7 @@ App::uses('AppModel','Model');
     public function listFindHabitaciones($order_by='Habitacione.created', $order='DESC') {
             $arr_obj_habitacione = $this->findObjects('all',array(
                     'conditions'=>array(
-                           // 'Habitacione.descripcion LIKE'=> '%'.$search_descripcion.'%',
+                           // 'Habitacione.nro_habitacion LIKE'=> '%'.$search_nro_habitacion.'%',
                             'Habitacione.estado != ' => 0
                     ),
                     'order'=> array($order_by.' '.$order),
@@ -62,7 +62,7 @@ App::uses('AppModel','Model');
     public function listHabitaciones() {
         return $this->find('list',
                 array(
-                        'fields' => array('id','descripcion'),
+                        'fields' => array('id','nro_habitacion'),
                         'conditions'=>array(
                                 'Habitacione.estado != '=> 0
                         ),
