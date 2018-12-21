@@ -46,13 +46,13 @@ class HabitacionesController extends AppController{
 			$search_num_habitacion = '';
 		}
 		
-		$list_estado_habitacion_all = $this->Habitacione->listAllHabitaciones($order_by, utf8_encode($search_num_habitacion),$order_by_or);
-		$list_estado_habitacion = $this->Habitacione->listFindHabitaciones($order_by, utf8_encode($search_num_habitacion),$order_by_or, $start, $per_page);
-		$count = count($list_estado_habitacion_all);
+		$list_habitacion_all = $this->Habitacione->listAllHabitaciones($order_by, utf8_encode($search_num_habitacion),$order_by_or);
+		$list_habitacion = $this->Habitacione->listFindHabitaciones($order_by, utf8_encode($search_num_habitacion),$order_by_or, $start, $per_page);
+		$count = count($list_habitacion_all);
 		$no_of_paginations = ceil($count / $per_page);
 		$page = $page + 1;
 		
-		$this->set(compact('list_estado_habitacion','page','no_of_paginations'));
+		$this->set(compact('list_habitacion','page','no_of_paginations'));
 	}
 	
 	public function find_habitaciones() {
@@ -62,9 +62,9 @@ class HabitacionesController extends AppController{
 		$order_by='Habitacione.created';
 		$order = 'DESC';
 	
-		$list_estado_habitacion = $this->Habitacione->listFindHabitaciones($order_by, $order);
+		$list_habitacion = $this->Habitacione->listFindHabitaciones($order_by, $order);
 		
-		$this->set(compact('list_estado_habitacion'));
+		$this->set(compact('list_habitacion'));
 	}
 	
 	
@@ -73,22 +73,22 @@ class HabitacionesController extends AppController{
 	 * 16 March 2015
 	 * @author Vladimir
 	 */
-	public function add_edit_estado_habitacion($estado_habitacion_id=null){
+	public function add_edit_habitacion($habitacion_id=null){
 		$this->layout = 'ajax';
 		
 		if($this->request->is('post')  || $this->request->is('put')){
-			if(isset($estado_habitacion_id) && intval($estado_habitacion_id) > 0){
+			if(isset($habitacion_id) && intval($habitacion_id) > 0){
 				
 				//update
 				$error_validation = '';
 				
-				$this->Habitacione->id = $estado_habitacion_id;
+				$this->Habitacione->id = $habitacion_id;
 	
 				//$this->Persona->set($this->request->data);
 				//$this->Persona->setFields();
 	
 				if ($this->Habitacione->save($this->request->data)) {
-					echo json_encode(array('success'=>true,'msg'=>__('Guardado con &eacute;xito.'),'EstadoHabitacione_id'=>$estado_habitacion_id));
+					echo json_encode(array('success'=>true,'msg'=>__('Guardado con &eacute;xito.'),'EstadoHabitacione_id'=>$habitacion_id));
 					exit();
 				}else{
 					echo json_encode(array('success'=>false,'msg'=>__('Su informaci&oacute;n es incorrecta'),'validation'=>$this->Habitacione->validationErrors));
@@ -102,42 +102,42 @@ class HabitacionesController extends AppController{
 				
 				$this->Habitacione->create();
 				if ($this->Habitacione->save($this->request->data)) {
-					$estado_habitacion_id = $this->Habitacione->id;
-					echo json_encode(array('success'=>true,'msg'=>__('La estado_habitacion fue agregado con &eacute;xito.'),'EstadoHabitacione_id'=>$estado_habitacion_id));
+					$habitacion_id = $this->Habitacione->id;
+					echo json_encode(array('success'=>true,'msg'=>__('La habitacion fue agregado con &eacute;xito.'),'EstadoHabitacione_id'=>$habitacion_id));
 					exit();
 				}else{
-					$estado_habitacion_id = '';
+					$habitacion_id = '';
 					echo json_encode(array('success'=>false,'msg'=>__('Su informaci&oacute;n es incorrecta'),'validation'=>$this->Habitacione->validationErrors));
 					exit();
 				}
 			}
 		}else{
-			if(isset($estado_habitacion_id)){
-				$obj_estado_habitacion = $this->Habitacione->findById($estado_habitacion_id);
+			if(isset($habitacion_id)){
+				$obj_habitacion = $this->Habitacione->findById($habitacion_id);
 				
-				$this->request->data = $obj_estado_habitacion->data;
-				$this->set(compact('estado_habitacion_id','obj_estado_habitacion'));
+				$this->request->data = $obj_habitacion->data;
+				$this->set(compact('habitacion_id','obj_habitacion'));
 			}
 		}
 	}
 	
-	public function delete_estado_habitacion(){
+	public function delete_habitacion(){
 		$this->layout = 'ajax';
 	
 		$this->loadModel('Habitacione');
 	
 		if($this->request->is('post')){
-			$estado_habitacion_id = $this->request->data['estado_habitacion_id'];
+			$habitacion_id = $this->request->data['habitacion_id'];
 			
-			$obj_estado_habitacion = $this->Habitacione->findById($estado_habitacion_id);
-			if($obj_estado_habitacion->saveField('estado', 0)){
+			$obj_habitacion = $this->Habitacione->findById($habitacion_id);
+			if($obj_habitacion->saveField('estado', 0)){
 				echo json_encode(array('success'=>true,'msg'=>__('Eliminado con &eacute;xito.')));
 				exit();
 			}else{
 				echo json_encode(array('success'=>false,'msg'=>__('Error inesperado.')));
 				exit();
 			}
-			/*if($this->Habitacione->deleteEstadoHabitacione($estado_habitacion_id)){
+			/*if($this->Habitacione->deleteEstadoHabitacione($habitacion_id)){
 				echo json_encode(array('success'=>true,'msg'=>__('Eliminado con &eacute;xito.')));
 				//exit();
 			}else{
@@ -148,18 +148,18 @@ class HabitacionesController extends AppController{
 		}
 	}
 	
-	public function add_estado_habitacion(){
+	public function add_habitacion(){
 		$this->layout = 'ajax';
 		$this->loadModel('Habitacione');
 		if($this->request->is('post') || $this->request->is('put')){
 			//debug($this->request->data['Habitacione']['num_habitacion']); exit();
 			$this->Habitacione->create();
 			if ($this->Habitacione->save($this->request->data)) {
-				$estado_habitacion_id = $this->Habitacione->id;
-				echo json_encode(array('success'=>true,'msg'=>__('La estado_habitacion fue agregado con &eacute;xito.'),'EstadoHabitacione_id'=>$estado_habitacion_id));
+				$habitacion_id = $this->Habitacione->id;
+				echo json_encode(array('success'=>true,'msg'=>__('La habitacion fue agregado con &eacute;xito.'),'EstadoHabitacione_id'=>$habitacion_id));
 				exit();
 			}else{
-				$estado_habitacion_id = '';
+				$habitacion_id = '';
 				echo json_encode(array('success'=>false,'msg'=>__('Su informaci&oacute;n es incorrecta'),'validation'=>$this->Habitacione->validationErrors));
 				exit();
 			}	

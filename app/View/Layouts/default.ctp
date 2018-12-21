@@ -24,6 +24,7 @@
     <script src="<?= ENV_WEBROOT_FULL_URL;?>js/user.js" type="text/javascript"></script>
     <script src="<?= ENV_WEBROOT_FULL_URL;?>js/persona.js" type="text/javascript"></script>
     <script src="<?= ENV_WEBROOT_FULL_URL;?>js/rol_persona.js" type="text/javascript"></script>
+    <script src="<?= ENV_WEBROOT_FULL_URL;?>js/habitacion.js" type="text/javascript"></script>
     <script src="<?= ENV_WEBROOT_FULL_URL;?>js/estado_habitacion.js" type="text/javascript"></script>
     
     
