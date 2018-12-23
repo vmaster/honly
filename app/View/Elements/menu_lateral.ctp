@@ -19,7 +19,7 @@
         <a href="#error-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-exclamation-sign"></i>Mantenimiento <i class="icon-chevron-up"></i></a>
         <ul id="error-menu" class="nav nav-list collapse">
             <li ><a href="403.html">Usuarios</a></li>
-            <li ><a href="404.html">Habitaciones</a></li>
+            <li ><a href=<?php echo ENV_WEBROOT_FULL_URL.'habitaciones/'; ?>>Habitaciones</a></li>
             <li ><a href="500.html">Productos</a></li>
             <li ><a href=<?php echo ENV_WEBROOT_FULL_URL.'estado_habitaciones/'; ?>>Estado de habitación</a></li>
             <li ><a href=<?php echo ENV_WEBROOT_FULL_URL.'personas/'; ?> >Personas</a></li>
