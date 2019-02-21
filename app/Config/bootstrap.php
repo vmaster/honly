@@ -137,3 +137,8 @@ define('ENV_WEBROOT_FULL_URL',Configure::read('ENV_WEBROOT_FULL_URL'));
 Configure::write('NUM_DIGITOS_DNI',8);
 Configure::write('NUM_DIGITOS_RUC',11);
 Configure::write('NUM_DIGITOS_CEXT',12);
+
+$tipo_habitacion = array('SIMPLE' => 1, 'DOBLE' => 2 , 'MATRIMONIAL' => 3);
+
+Configure::write('LIST_TIPO_HABITACIONES', $tipo_habitacion);
+//define('LIST_TIPO_HABITACION', Configure::read('LIST_TIPO_HABITACIONES'));
