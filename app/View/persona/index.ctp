@@ -1,7 +1,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-	$('#table_content_habitaciones').DataTable({
+	$('#table_content_personas').DataTable({
 	 	dom: 'T<"clear">lfrtip',
 		tableTools: {
 			"sSwfPath": env_webroot_script + "/lib/data.tables-1.10.6/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
@@ -36,12 +36,12 @@ $(document).ready(function(){
         <div class="row-fluid">
 
 
-	<div id="habitacion">
-		<div id="add_edit_habitacion_container">
+	<div id="persona">
+		<div id="add_edit_persona_container">
 		</div>
 
 		<div class="btn-toolbar">
-		<button class="btn btn-primary btn-nuevo-habitacion"><i class="icon-plus"></i> <?php echo __('Nueva Habitación'); ?></button>
+		<button class="btn btn-primary btn-nuevo-persona"><i class="icon-plus"></i> <?php echo __('Nueva Persona'); ?></button>
 		<div class="btn-group">
 		</div>
 	</div>
@@ -50,14 +50,14 @@ $(document).ready(function(){
 	<div class="well">
 		<div id = "conteiner_all_rows">
 			<?php 
-				if(empty($list_habitacion)){ 
-					echo __('No hay datos de Habitaciones');
+				if(empty($list_persona)){ 
+					echo __('No hay datos de Personaes');
 				}else{ ?>  
 				  <?php 
-				  	echo $this->element('Habitacione/habitacion_row');
+				  	echo $this->element('Persona/persona_row');
 					  ?>
 			<?php }?>
-		</div>
+		</div>		
 	</div>
 	<!-- <div class="pagination">
 	<ul>
@@ -71,7 +71,7 @@ $(document).ready(function(){
 	</div>
 	-->
 
-		<div class="modal fade" id="myModalDeleteHabitacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" habitacion_id=''>
+		<div class="modal fade" id="myModalDeletePersona" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" persona_id=''>
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -82,12 +82,12 @@ $(document).ready(function(){
 					<div class="modal-body">
 						<p class="error-text">
 							<i class="icon-warning-sign modal-icon"></i>
-							<?php echo utf8_encode(__('¿Estas seguro de querer Eliminar La Habitacion?')); ?>
+							<?php echo utf8_encode(__('¿Estas seguro de querer Eliminar La Persona?')); ?>
 						</p>
 					</div>
 					<div class="modal-footer">
 						<button class="btn" data-dismiss="modal" aria-hidden="true"><?php echo __('Cancelar'); ?></button>
-						<button class="btn btn-danger eliminar-habitacion-trigger" data-dismiss="modal"><?php echo __('Aceptar'); ?></button>
+						<button class="btn btn-danger eliminar-persona-trigger" data-dismiss="modal"><?php echo __('Aceptar'); ?></button>
 					</div>
 				</div>
 			</div>
