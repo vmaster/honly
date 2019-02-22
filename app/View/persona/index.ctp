@@ -1,26 +1,14 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-	$('#table_content_personas').DataTable({
-	 	dom: 'T<"clear">lfrtip',
-		tableTools: {
-			"sSwfPath": env_webroot_script + "/lib/data.tables-1.10.6/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
-			"aButtons": [
-	                "copy",
-	                "csv",
-	                "xls",
-	                "pdf"
-	                /*{
-	                    "sExtends":    "collection",
-	                    "aButtons":    [ "csv", "xls", "pdf" ]
-	                }*/
-	        ]
-		}
-	});
-		
-	$body = $('body');
-	var order_by_select;
-	var order_by_or;
+	 $('#table_content_personas').DataTable({
+    	//'ajax': env_webroot_script + 'personas/ajax_list_personas'
+    	ajax: {
+    		url: env_webroot_script + 'personas/ajax_list_personas',
+    		dataSrc: 'data'
+    		//"dataSrc": "tableData"
+    	}
+    });
 
 });
 </script>
@@ -50,13 +38,18 @@ $(document).ready(function(){
 	<div class="well">
 		<div id = "conteiner_all_rows">
 			<?php 
+				  	echo $this->element('Persona/persona_row');
+					  ?>
+			<?php 
+			//debug($list_persona);
+			/*
 				if(empty($list_persona)){ 
 					echo __('No hay datos de Personaes');
 				}else{ ?>  
 				  <?php 
 				  	echo $this->element('Persona/persona_row');
 					  ?>
-			<?php }?>
+			<?php }*/?>
 		</div>		
 	</div>
 	<!-- <div class="pagination">
