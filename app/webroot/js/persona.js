@@ -118,7 +118,16 @@ $(document).ready(function(){
 				$('#add_edit_persona').hide();
 				alertify.success(data.msg);
 
-				$('#conteiner_all_rows').load(env_webroot_script + escape('personas/find_personas/1/'+null+'/'+null+'/'+null),function(){});
+				$('#conteiner_all_rows').load(env_webroot_script + escape('personas/find_personas/1/'+null+'/'+null+'/'+null),function(){
+					 $('#table_content_personas').DataTable({
+				    	//'ajax': env_webroot_script + 'personas/ajax_list_personas'
+				    	ajax: {
+				    		url: env_webroot_script + 'personas/ajax_list_personas',
+				    		dataSrc: 'data'
+				    		//"dataSrc": "tableData"
+				    	}
+				    });
+				});
 
 			}else{
 				$.each( data.validation, function( key, value ) {
@@ -134,7 +143,7 @@ $(document).ready(function(){
 
 	$body.off('click','div#persona .edit-persona-trigger');
 	$body.on('click','div#persona .edit-persona-trigger', function(){
-		persona_id = $(this).parents('.persona_row_container').attr('persona_id');
+		persona_id = $(this).parents('.div-row-persona').attr('persona_id');
 		//alert(persona_id); return false;
 		//tipo_persona_id = $(this).parents('.persona_row_container').attr('tipo_persona_id');
 		persona.openAddEditPersona(persona_id);
