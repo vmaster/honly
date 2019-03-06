@@ -65,7 +65,7 @@ $(document).ready(function(){
 				if(data.success == true){
 					//$('.div-row-persona[persona_id='+persona_id+']').fadeOut(function(){$(this).parents('tr').remove()});
 					$('#data_rol[persona_id'+persona_id+']').fadeOut(function(){$(this).parents('tr').remove()});
-
+					
 					//$('.persona_row_container[persona_id='+persona_id+']').fadeOut(function (){$(this).remove()});
 					alertify.success(data.msg);
 				}else{

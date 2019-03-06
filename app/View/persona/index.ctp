@@ -80,7 +80,7 @@ $(document).ready(function(){
 					</div>
 					<div class="modal-footer">
 						<button class="btn" data-dismiss="modal" aria-hidden="true"><?php echo __('Cancelar'); ?></button>
-						<button class="btn btn-danger eliminar-persona-trigger" data-dismiss="modal"><?php echo __('Aceptar'); ?></button>
+						<button class="btn btn-danger delete-persona-trigger" data-dismiss="modal"><?php echo __('Aceptar'); ?></button>
 					</div>
 				</div>
 			</div>
