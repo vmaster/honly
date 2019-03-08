@@ -7,7 +7,7 @@
 				<?php echo $this->Form->input('nro_habitacion', array('div' => false, 'label' => false, 'class'=> 'txtNroHabitacion form-control','id' =>'txtNroHabitacion','style'=>'text-transform:uppercase;', 'onkeyup'=>'javascript:this.value=this.value.toUpperCase();')); ?>
 			</div>
 			<div class="span3 col-md-3 col-sm-6 col-xs-6">
-				<?php echo "<label  id='lblHabitacion'>".__('Habitación')."</label>"; ?>
+				<?php echo "<label  id='lblHabitacion'>".__('Nivel')."</label>"; ?>
 				<select name="data[Habitacione][nivel]" class="cboHabitacion form-control" id = "cboHabitacion">
 					<?php
 						if (isset($obj_habitacion)){
