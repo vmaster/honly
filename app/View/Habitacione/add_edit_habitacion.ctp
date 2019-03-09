@@ -6,34 +6,7 @@
 				<?php echo "<label id='lblNumHabitacione'>".__('Número de Habitación')."</label>"; ?>
 				<?php echo $this->Form->input('nro_habitacion', array('div' => false, 'label' => false, 'class'=> 'txtNroHabitacion form-control','id' =>'txtNroHabitacion','style'=>'text-transform:uppercase;', 'onkeyup'=>'javascript:this.value=this.value.toUpperCase();')); ?>
 			</div>
-			<div class="span3 col-md-3 col-sm-6 col-xs-6">
-				<?php echo "<label  id='lblHabitacion'>".__('Nivel')."</label>"; ?>
-				<select name="data[Habitacione][nivel]" class="cboHabitacion form-control" id = "cboHabitacion">
-					<?php
-						if (isset($obj_habitacion)){
-							echo "<option value = ".$obj_persona->getAttr('sexo')." selected='selected'>";
-							if($obj_persona->getAttr('sexo') == 'M'){ 
-								echo __('Masculino')."</option>";
-								echo "<option value = 'F'>".__('Femenino')."</option>";
-							}else{ 
-								echo __('Femenino')."</option>";
-								echo "<option value = 'M'>".__('Masculino')."</option>";
-							}
-						}else{
-						?>
-						<option value="M">
-							<?php echo __('Masculino'); ?>
-						</option>
-						<option value="F">
-							<?php echo __('Femenino'); ?>
-						</option>
-					<?php } ?>
-				</select>
-			</div>
-			<div class="span3 col-md-3 col-sm-6 col-xs-6">
-				<?php echo "<label id='lblTipoHabitacion'>".__('Tipo Habitación')."</label>"; ?>
-				<?php echo $this->Form->input('nivel', array('div' => false, 'label' => false, 'class'=> 'txtNivel form-control','id' =>'txtNivel','style'=>'text-transform:uppercase;', 'onkeyup'=>'javascript:this.value=this.value.toUpperCase();')); ?>
-			</div>
+
 
 			<div class="span3 col-md-3 col-sm-6 col-xs-6">
 				<?php echo "<label id='lblNivel'>".__('Nivel')."</label>"; ?>
@@ -81,16 +54,18 @@
 
 				</select>
 			</div>
-
+		</div>
+		
+		<div class="row">
 			<div class="check">
 				<label> Aire acondicionado <input name="data[Habitacione][aire_acondicionado]" type="checkbox" value="0" id="rbtAireAcond" checked></label>
 				<label> Terma <input name="data[Habitacione][terma]" type="checkbox" value="0" id="rbtTerma" checked></label>
 				<label> Jacuzzi <input name="data[Habitacione][jacuzzi]" type="checkbox" value="0" id="rbtJacuzzi" checked></label>
 				<label> Cable <input name="data[Habitacione][cable]" type="checkbox" value="0" id="rbtCable" checked></label>
 			</div>
-
-
 		</div>
+
+		
 		<br>
 		<div class="row" style="text-align:left;">
 			<div class="span3 col-md-3 col-sm-6 col-xs-6">
